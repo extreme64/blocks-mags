@@ -1,0 +1,132 @@
+:root {
+    --light-1: 		#eeefe7;
+    --light-2: 		#a79986;
+    --dark-1: 		#1b121f;
+	--dark-2: 		#3d0b37;
+    --green-1: 		#9ab68a;
+    --orange-1: 	#faa519;
+
+	--buddy-light-1: 		#ffffff; /* white */
+	--buddy-light-2: 		#f1f3f4; /* basic bg. gray */
+    --buddy-light-3: 		#eeefe7; /* section in content QM */
+	--buddy-light-4: 		#7f8c8d; /* light colored text */
+    --buddy-dark-1: 		#2e3246; /* text content */
+	--buddy-dark-2: 		#12263f;
+	--buddy-dark-3: 		#111111;
+	--buddy-purple-1: 		#e1d6e7;
+	--buddy-purple-2: 		#d7c6e0;
+	--buddy-purple-3: 		#3d065b;
+	--buddy-purple-4: 		#3d0b37;
+    --buddy-orange-1: 		#faa519;
+	--buddy-orange-2: 		#dc8861;
+	--buddy-orange-cta-1: 	#ec7143;
+    --buddy-green-1: 		#9ab68a;
+
+	--test-1: 				red;
+}
+
+.hover-color-orange-button,
+.hover-color-light-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1em auto;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none !important;
+	border-radius: 25px;
+	font-size: 0.7em;
+}
+.hover-color-orange-button {
+	text-decoration: none !important;
+	color: var(--buddy-light-1) !important;
+	background: var(--buddy-orange-cta-1);
+	border-bottom: 3px solid var(--buddy-dark-3);
+}
+
+.hover-color-orange-button a,
+.hover-color-orange-button a:visited {
+	text-decoration: none;
+	color: var(--buddy-light-1);
+}
+
+.hover-color-beige:hover {
+	background-color: var(--light-1) !important;
+}
+.hover-color-orange-button:hover.hover-color-orange-button:hover {
+	color: var(--dark-2) !important;
+	background-color: var(--buddy-light-1);
+	border-bottom: 3px solid var(--buddy-orange-cta-1);
+}
+
+
+.hover-color-light-button {
+	color: var(--buddy-purple-3)!important;
+	background: var(--buddy-light-1);
+	border-bottom: 3px solid var(--buddy-dark-3);
+}
+.hover-color-light-button a,
+.hover-color-light-button a:visited {
+	text-decoration: none;
+	color: var(--buddy-purple-3);
+}
+.hover-color-light-button:hover {
+	color: var(--buddy-light-1)!important;
+	background-color: var(--buddy-purple-3);
+	border-bottom: 3px solid var(--buddy-orange-cta-1);
+}
+
+
+.wp-block-pza-casino-score__block-inner {
+    margin-bottom: 20px;
+    padding: 0 15px 15px;
+    background: linear-gradient(0deg, rgb(213, 213, 213), #fff);
+    border-radius: 25px;
+    border-bottom: 2px solid #a9a9a9;
+}
+
+.wp-block-pza-casino-score__title {
+    color: var(--wp-admin-theme-color);
+    text-align: center;
+    margin: 0 10px 10px 10px !important;
+    padding: 14px 0;
+    background: #fff;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.wp-block-pza-casino-score__scors {}
+
+ul.wp-block-pza-casino-score__scors-list {
+	display: flex;
+	justify-content: space-around;
+}
+
+.wp-block-pza-casino-score__scors-list>li {
+    list-style: none;
+    font-size: 0.7em;
+    line-height: 1em;
+    color: var(--wp-admin-theme-color-darker-20);
+}
+
+.wp-block-pza-casino-score__overall {
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+
+.star.style--1{
+	color: var(--buddy-orange-2) !important;
+	filter: drop-shadow(3px 4px 1px white);
+}
+
+.star.style--2{
+	color: var(--buddy-purple-3) !important;
+	filter: drop-shadow(3px 4px 1px white);
+}
+
+.star.style--3{
+	filter: drop-shadow(3px 2px 3px #ec7143);
+	font-style: unset;
+}

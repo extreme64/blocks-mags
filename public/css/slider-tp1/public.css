@@ -1,0 +1,130 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ body {
+     margin: 0px;
+     font-family: sans-serif;
+ }
+
+ .slider-tp1 .wp-block-columns.has-background {
+     padding: 0;
+ }
+
+ section.slider-tp1 {
+     display: flex;
+     flex-direction: column;
+     background: #faeefc;
+ }
+
+ .slider-tp1.aligncenter {
+     padding-bottom: 0;
+ }
+
+ .slider-tp1 .slider--inner-wrap {
+     min-height: 350px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     padding: 0px 15px 3px 15px;
+ }
+
+ .slider-tp1 .slide {
+     grid-template-columns: 2fr 1fr;
+     grid-gap: 20px;
+     justify-items: center;
+     justify-content: center;
+     align-items: center;
+     min-height: 362px;
+ }
+
+ .slider-tp1 .slide.active {
+     display: flex;
+ }
+
+ .slider-tp1 .slide:not(.active) {
+     display: none;
+ }
+
+ .slider-tp1 .wp-block-image img {
+     max-width: clamp(70%, 3vw, 90%);
+ }
+
+ .slider-tp1 nav.slider-buttons {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-bottom: 15px;
+ }
+
+ .slider-tp1 .slider-buttons .button {
+     aspect-ratio: 1/1;
+     display: flex;
+     align-items: center;
+     margin: 3px 5px;
+     padding: 0 12px;
+     font-size: 1.6rem;
+     border: 1px solid #e4c7e4;
+     border-radius: 4px;
+ }
+
+ .slider-tp1 .slider-buttons .button:hover,
+ .slider-tp1 .slider-buttons .button:focus {
+     color: #e4c7e4;
+     background: #ffffff;
+ }
+
+ /* Animations */
+ .animate-fadeFromLeft {
+     animation-name: fadeFromLeft;
+     animation-duration: 1s;
+     animation-fill-mode: both;
+ }
+
+ .animate-fadeFromRight {
+     animation-name: fadeFromRight;
+     animation-duration: 1s;
+     animation-fill-mode: both;
+ }
+
+ @keyframes fadeFromLeft {
+     0% {
+         opacity: 0;
+         transform: translateX(-20px);
+     }
+
+     100% {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ @keyframes fadeFromRight {
+     0% {
+         opacity: 0;
+         transform: translateX(20px);
+     }
+
+     100% {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ @media screen and (max-width: 1023px) {
+     .slider-tp1 .slide {
+         grid-template-columns: initial;
+         min-height: clamp(700px, 4vw, 760px);
+     }
+
+     .slider-tp1 .wp-block-image img {
+         max-width: clamp(42%, 3vw, 100%);
+     }
+ }
+
+ @media (min-width: 782px) {
+     .wp-block-column:not(:first-child) {
+         margin-left: 0;
+     }
+ }

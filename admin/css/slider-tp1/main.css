@@ -1,0 +1,14 @@
+.awp-categoryselect div {
+	max-height: 200px;
+	overflow: hidden scroll;
+	border: 1px solid #b3bcc0;
+}
+
+.wp-block-pza-slider-tp1 .wp-block-columns .wp-block p {
+	font-size: 0.6em;
+	line-height: 1em;
+}
+
+.wp-block-pza-slider-tp1 .wp-block-columns:has(:not(.has-background)) {
+	padding: 1.25em 2.375em;
+}

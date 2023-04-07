@@ -1,0 +1,217 @@
+/**
+ * Custom block - Casino Score
+ *
+ * @since 1.0.1
+ */
+
+ :root {
+    --light-1: 		#eeefe7;
+    --light-2: 		#a79986;
+    --dark-1: 		#1b121f;
+	--dark-2: 		#3d0b37;
+    --green-1: 		#9ab68a;
+    --orange-1: 	#faa519;
+
+	--buddy-light-1: 		#ffffff; /* white */
+	--buddy-light-2: 		#f1f3f4; /* basic bg. gray */
+    --buddy-light-3: 		#eeefe7; /* section in content QM */
+	--buddy-light-4: 		#7f8c8d; /* light colored text */
+    --buddy-dark-1: 		#2e3246; /* text content */
+	--buddy-dark-2: 		#12263f;
+	--buddy-dark-3: 		#111111;
+	--buddy-purple-1: 		#e1d6e7;
+	--buddy-purple-2: 		#d7c6e0;
+	--buddy-purple-3: 		#3d065b;
+	--buddy-purple-4: 		#3d0b37;
+    --buddy-orange-1: 		#faa519;
+	--buddy-orange-2: 		#dc8861;
+	--buddy-orange-cta-1: 	#ec7143;
+    --buddy-green-1: 		#9ab68a;
+
+	--test-1: 				red;
+}
+
+.casino-score-block {
+	margin: 2em auto;
+}
+.casino-score-block__inner {
+	background: linear-gradient(0deg, #ffba9a, #0000);
+	overflow: hidden;
+	border-radius: 25px;
+}
+.casino-score-block__scores,
+.casino-score-block__overall {
+	text-align: center;
+}
+
+.casino-score-block .casino-score-block__score {
+	padding-bottom: 0px;
+	display: flex;
+	/* flex-direction: column; */
+}
+
+.casino-score-block__scores .casino-score-block__title,
+.casino-score-block__overall .casino-score-block__title {
+	color: var(--buddy-purple-3);
+	text-transform: uppercase;
+}
+
+.casino-score-block__score-text {
+	border: 2px solid var(--buddy-light-1);
+	border-radius: 11px;
+	color: var(--buddy-purple-3);
+	padding: 5px 10px;
+	min-width: 102px;
+	margin: 5px 4px;
+	text-transform: uppercase;
+	background: var(--buddy-light-1);
+	z-index: 1;
+}
+
+.casino-score-block__score-icons {
+	display: flex;
+	align-items: center;
+	background: var(--dark-2);
+	border-radius: 4px 10px 10px 4px;
+	min-width: 120px;
+	min-height: 30px;
+	align-content: center;
+	position: relative;
+	margin: 8px 0;
+	left: -9px;
+	padding: 0 10px;
+	z-index: 2;
+	justify-content: center;
+}
+
+.casino-score-block__items {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+}
+
+.casino-score-block .casino-score-block__overall p {
+	padding-bottom: 0px;
+	color: var(--buddy-purple-3);
+}
+
+.casino-score-block__overall {
+	font-size: 12px;
+}
+
+.casino-score-block__value-wrap {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 0.9em;
+	border-bottom: 2px solid #808080;
+	border-radius: 25px;
+}
+
+
+.casino-score-block__value > p {
+	padding: 11px 0px 0px 0px;
+	font-size: 18px;
+}
+
+.casino-score-block__value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	width: 100px;
+	margin-top: 0px;
+	padding-bottom: 5px;
+	text-align: center;
+	font-weight: 700 !important;
+	font-style: normal !important;
+	line-height: 18px;
+	font-size: 16px;
+	background: url(../../graphics/overall-score-scale-2.svg) no-repeat 50%;
+}
+
+.casino-score-block__value {
+	color: var(--buddy-dark-1);
+}
+
+@media screen and (max-width: 767px) {
+	.casino-score-block__items {
+		display: flex;
+		justify-items: center;
+		flex-direction: column;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-content: center;
+	}
+}
+
+
+.star.style--1{
+	color: #ff8400 !important;
+	filter: drop-shadow(1px 2px 2px #eee);
+}
+
+.star.style--2{
+	color: var(--buddy-purple-3) !important;
+	filter: drop-shadow(1px 2px 2px #eee);
+}
+
+.star.style--3{
+	filter: drop-shadow(3px 2px 3px #ec7143);
+	font-style: unset;
+}
+
+
+
+.hover-color-orange-button,
+.hover-color-light-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1em auto;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none !important;
+	border-radius: 25px;
+	font-size: 0.7em;
+	max-width: 200px;
+}
+.hover-color-orange-button {
+	text-decoration: none !important;
+	color: var(--buddy-light-1) !important;
+	background: var(--buddy-orange-cta-1);
+	border-bottom: 3px solid var(--buddy-dark-3);
+}
+
+.hover-color-orange-button a,
+.hover-color-orange-button a:visited {
+	text-decoration: none;
+	color: var(--buddy-light-1);
+}
+
+.hover-color-beige:hover {
+	background-color: var(--light-1) !important;
+}
+.hover-color-orange-button:hover.hover-color-orange-button:hover {
+	color: var(--dark-2) !important;
+	background-color: var(--buddy-light-1);
+	border-bottom: 3px solid var(--buddy-orange-cta-1);
+}
+
+
+.hover-color-light-button {
+	color: var(--buddy-purple-3)!important;
+	background: var(--buddy-light-1);
+	border-bottom: 3px solid var(--buddy-dark-3);
+}
+.hover-color-light-button a,
+.hover-color-light-button a:visited {
+	text-decoration: none;
+	color: var(--buddy-purple-3);
+}
+.hover-color-light-button:hover {
+	color: var(--buddy-light-1)!important;
+	background-color: var(--buddy-purple-3);
+	border-bottom: 3px solid var(--buddy-orange-cta-1);
+}

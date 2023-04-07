@@ -39,19 +39,19 @@ class Blocks_Mag_Block
         $this->name = $name;
         $this->enqueue_tag = $enqueue_tag;
     }
-    /**
-     *Initializes the block in the WordPress editor.
-     * 
-     * @since 1.1.4
-     */
-    public function init()
-    {
-        register_block_type($this->name , array(
-            'editor_script' => $this->enqueue_tag,
-            'editor_style' => $this->enqueue_tag,
-            'render_callback' => array($this, 'render'),
-        ));
-    }
+    // /**
+    //  *Initializes the block in the WordPress editor.
+    //  * 
+    //  * @since 1.1.4
+    //  */
+    // public function init()
+    // {
+    //     register_block_type($this->name , array(
+    //         'editor_script' => $this->enqueue_tag,
+    //         'editor_style' => $this->enqueue_tag,
+    //         'render_callback' => array($this, 'render'),
+    //     ));
+    // }
 }
 
 

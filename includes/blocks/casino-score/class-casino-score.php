@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) exit;
  * @singleton
  * 
  */
-class Class_Casino_Score
+class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Renderable
 {
 
     /**
@@ -55,10 +55,10 @@ class Class_Casino_Score
      * 
      * @since   1.1.3
      */
-    public static function init()
+    public function init()
     {
         self::$int_domain = Blocks_Mags_i18n::$text_domain;
-        self::register_block();
+        $this->register_block();
     }
     /**
      * Register block
@@ -76,7 +76,7 @@ class Class_Casino_Score
      * Pass the handle of the register script to "editor_script" argument of register_block_type(). WordPress will enqueue the script when block is used.
      * https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php#L20
      */
-    public static function register_block()
+    public function register_block()
     {
         register_block_type(self::$block_name, [
             'editor_script' => self::$enqueue_script_tag,
@@ -91,7 +91,7 @@ class Class_Casino_Score
                     'overall' => round(floatval(get_post_meta($post_id, 'casino_overall_rating', true)), 1),
                     'external_link' => get_post_meta($post_id, 'casino_external_link', true)
                 ];
-                return self::casino_score_render($attr, $content, $casino_custom);
+                return $this->render($attr, $content, $casino_custom);
             },
             'attributes' => [
                 'starStyle' =>              ['type' => 'string', 'default' => '3'],
@@ -106,8 +106,8 @@ class Class_Casino_Score
          * 
          * @since 1.0.0
          */
-        register_rest_field( 'casino' , 'casino_custom', [
-            'get_callback' => function() {
+        register_rest_field('casino', 'casino_custom', [
+            'get_callback' => function () {
                 $post_id = get_the_ID();
                 return [
                     'trust' => get_post_meta($post_id, 'casino_rating_trust', true),
@@ -130,7 +130,7 @@ class Class_Casino_Score
      * 
      * @since   1.1.3
      */
-    public static function casino_score_render($attr, $content, array $meta)
+    public function render($attr, $content, $meta = [])
     {
 
         $html_str = '';
@@ -139,15 +139,15 @@ class Class_Casino_Score
         $emoji_star = '<i class="star %s">⭐</i>';
         switch ($attr['starStyle']) {
             case '1':
-                $star_html = sprintf( $fa5_star, "style--1");
+                $star_html = sprintf($fa5_star, "style--1");
                 break;
             case '2':
-                $star_html = sprintf( $fa5_star, "style--2");
+                $star_html = sprintf($fa5_star, "style--2");
                 break;
             case '3':
-                $star_html = sprintf( $emoji_star, "style--3");
+                $star_html = sprintf($emoji_star, "style--3");
             default:
-                $star_html = sprintf( $emoji_star, "style--3");
+                $star_html = sprintf($emoji_star, "style--3");
                 break;
         }
         $star =  $star_html;
@@ -179,8 +179,8 @@ class Class_Casino_Score
                     break;
             }
             $html_str .= '<p class="casino-score-block__score">'
-            . '<span class="casino-score-block__score-text">' . __($key, self::$int_domain) . '</span>'
-            . '<span class="casino-score-block__score-icons">' . $rating_stars . '</span></p>';
+                . '<span class="casino-score-block__score-text">' . __($key, self::$int_domain) . '</span>'
+                . '<span class="casino-score-block__score-icons">' . $rating_stars . '</span></p>';
         }
 
         $btn = '';
@@ -207,7 +207,7 @@ class Class_Casino_Score
                     </a>";
         }
 
-      
+
         /* Use partal that displays HTML markup with data */
         $template_path = PLUGIN_ROOT_PATH . 'public\partials\blocks-mags-public-display.php';
         ob_start();
@@ -224,7 +224,7 @@ class Class_Casino_Score
      * 
      * @since   1.1.3
      */
-	public static function action_hook_wp_enqueue_frontend_files() 
+    public static function action_hook_wp_enqueue_frontend_files()
     {
         add_action('wp', function () {
             global $post;
@@ -233,9 +233,8 @@ class Class_Casino_Score
             }
         });
     }
-
-
 }
 
 
-Class_Casino_Score::init();
+$obj = new Class_Casino_Score('blocks-mags/casino-score', "casino-score-block");
+$obj->init();

@@ -25,6 +25,7 @@ class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderabl
         $this->int_domain = Blocks_Mags_i18n::$text_domain;
         $this->name = $name;
         $this->enqueue_tag = $enqueue_tag; //"slider-tp1-block";
+        $this->init();
     }
 
     /**
@@ -47,13 +48,13 @@ class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderabl
     //     return '<div class="slider-tp1">' . $content . '</div>';
     // }
 
-    public function render($attributes, $content) {
+    public function render($attributes, $content, $meta = []) {
         return '<div class="slider-tp1">' . $content . '</div>';
     }
 }
 
 /* .. */
-$blocksMagBlock = new Blocks_Mag_Block('blocks-mags2/class-slider-tp1', "slider-tp1-block");
-$blocksMagBlock->init();
+$blocksMagBlock = new Blocks_Mag_Block('blocks-mags/class-slider-tp1', "slider-tp1-block");
+// $blocksMagBlock->init();
 
 ?>

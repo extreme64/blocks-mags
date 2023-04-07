@@ -13,10 +13,11 @@ interface Blocks_Mags_Renderable
      * 
      * @param array $attributes An array of attributes for the class.
      * @param string $content The content to be rendered.
+     * @param string [$meta] Post meta data.
      * @return string The rendered output.
      * 
      * @since     1.1.3
      */
-    public function render($attributes, $content);
+    public function render($attributes, $content, $meta = []);
 }
 ?>

@@ -1,6 +1,5 @@
 <?php
-
-
+if (!defined('ABSPATH')) exit;
 
 /**
  * The plugin bootstrap file
@@ -18,7 +17,7 @@
  * Plugin Name:       Blocks Mags
  * Plugin URI:        https://na.io
  * Description:       This is a description of the plugin.
- * Version:           1.0.3
+ * Version:           1.1.3
  * Author:            Mast_G
  * Author URI:        https://github.com/extreme64/
  * License:           GPL-3.0+
@@ -26,11 +25,6 @@
  * Text Domain:       blocks-mags
  * Domain Path:       /languages
  */
-
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Currently plugin version.

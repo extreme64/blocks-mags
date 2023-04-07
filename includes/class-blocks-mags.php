@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 /**
  * The file that defines the core plugin class
@@ -122,6 +123,9 @@ class Blocks_Mags {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-blocks-mags-public.php';
 
+
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/interface-block-mags-renderable.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/class-blocks-mags-block.php';
 
 		/**
 		 * The class responsible for defining custom block 'slider-tp1'

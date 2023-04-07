@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 /**
  * Casino score block view.
  *

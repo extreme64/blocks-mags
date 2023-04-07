@@ -23,6 +23,11 @@ class Class_Casino_Score
      */
     private static $instance = null;
 
+    /**
+     * Block name
+     * 
+     * @since     1.0.0
+     */
     protected static $block_name = 'blocks-mags/casino-score';
 
     protected static $int_domain;
@@ -33,6 +38,7 @@ class Class_Casino_Score
 
 
     /**
+     * Class instance
      * 
      * @since   1.1.3
      */
@@ -49,7 +55,7 @@ class Class_Casino_Score
      * 
      * @since   1.1.3
      */
-    public static function init($post_id, $is_frontend)
+    public static function init()
     {
         self::$int_domain = Blocks_Mags_i18n::$text_domain;
         self::register_block();
@@ -95,6 +101,11 @@ class Class_Casino_Score
             ]
         ]);
 
+        /**
+         * Register REST field that adds data from custom post 'casino'
+         * 
+         * @since 1.0.0
+         */
         register_rest_field( 'casino' , 'casino_custom', [
             'get_callback' => function() {
                 $post_id = get_the_ID();
@@ -197,6 +208,7 @@ class Class_Casino_Score
         }
 
       
+        /* Use partal that displays HTML markup with data */
         $template_path = PLUGIN_ROOT_PATH . 'public\partials\blocks-mags-public-display.php';
         ob_start();
         include $template_path;
@@ -226,4 +238,4 @@ class Class_Casino_Score
 }
 
 
-Class_Casino_Score::init(0, false);
+Class_Casino_Score::init();

@@ -35,7 +35,9 @@ class Blocks_Mag_Block
      */
     public function __construct($name, $enqueue_tag)
     {
-        $this->domain = Blocks_Mags_i18n::$text_domain;
+        $i18n = new Blocks_Mags_i18n();
+        $this->domain = $i18n->get_i18n_domain();
+
         $this->name = $name;
         $this->enqueue_tag = $enqueue_tag;
     }

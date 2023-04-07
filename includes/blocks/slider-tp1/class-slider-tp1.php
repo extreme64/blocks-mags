@@ -22,7 +22,9 @@ class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderabl
     public function __construct($name, $enqueue_tag)
     {
         add_action('init', array($this, 'init'));
-        $this->int_domain = Blocks_Mags_i18n::$text_domain;
+        $i18n = new Blocks_Mags_i18n();
+        $this->int_domain = $i18n->get_i18n_domain;
+        
         $this->name = $name;
         $this->enqueue_tag = $enqueue_tag; //"slider-tp1-block";
         $this->init();

@@ -42,13 +42,13 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
      * 
      * @since   1.1.3
      */
-    public static function get_instance()
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
+    // public static function get_instance()
+    // {
+    //     if (is_null(self::$instance)) {
+    //         self::$instance = new self();
+    //     }
+    //     return self::$instance;
+    // }
 
     /**
      * Initialize block stuff
@@ -57,7 +57,9 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
      */
     public function init()
     {
-        self::$int_domain = Blocks_Mags_i18n::$text_domain;
+        $i18n = new Blocks_Mags_i18n();
+        $this->domain = $i18n->get_i18n_domain();
+
         $this->register_block();
     }
     /**

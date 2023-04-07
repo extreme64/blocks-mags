@@ -34,7 +34,12 @@ class Blocks_Mags_i18n {
 	 * 
 	 * @since 1.0.1
 	 */
-	public static $text_domain = 'blocks-mags';
+	public $text_domain = 'blocks-mags';
+
+	public function get_i18n_domain()
+	{
+		return $this->text_domain;
+	}
 	
 	/**
 	 * Load the plugin text domain for translation.
@@ -44,7 +49,7 @@ class Blocks_Mags_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			self::$text_domain,
+			$this->get_i18n_domain(),
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

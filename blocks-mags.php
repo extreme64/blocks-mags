@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) exit;
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://qwqwqw
+ * @link              https://na.io
  * @since             1.0.0
  * @package           Blocks_Mags
  *
@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) exit;
 /**
  * Currently plugin version.
  */
-define( 'BLOCKS_MAGS_VERSION', '1.0.3' );
+define( 'BLOCKS_MAGS_VERSION', '1.1.4' );
 
 /** 
  * Define plugin root path constant

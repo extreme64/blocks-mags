@@ -7,15 +7,18 @@
  * 
  * Part of modules: block-edit.js
  * 
- * Copyright - Proprietary
-*/
+ * @since 1.1.1
+ * 
+ * @package Blocks_Mags 
+ * @subpackage Blocks_Mags/admin/js/slider-tp1
+ */
 
 const { __ } = wp.i18n;
 
 /**
  * Template for the inital slide layout
  */
- const slideColumnsTemplate2 =  [ 'core/columns',
+ const slideColumnsTemplate =  [ 'core/columns',
     { 
         columns: null
     }
@@ -30,7 +33,7 @@ const { __ } = wp.i18n;
 const slidesTemplate = (numOfSlides, children) => {
     let slides = [];
     for (let i = 0; i < numOfSlides; i++) {
-        slides.push(slideColumnsTemplate2);
+        slides.push(slideColumnsTemplate);
     }
     return slides;
 };

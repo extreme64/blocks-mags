@@ -2,6 +2,9 @@
  * Public custom block - Slider Tp1
  * 
  * @since 1.0.1
+ * 
+ * @package    Blocks_Mags
+ * @subpackage Blocks_Mags/public/js/slider-tp1
  */
 
 const eventCallback = (eb) => {

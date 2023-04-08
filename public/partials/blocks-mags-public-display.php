@@ -6,7 +6,6 @@ if (!defined('ABSPATH')) exit;
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://na.io
  * @since      1.0.1
  *
  * @package    Blocks_Mags

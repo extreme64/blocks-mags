@@ -5,6 +5,9 @@ if (!defined('ABSPATH')) exit;
  * A parent class for all the custom blocks
  * 
  * @since 1.1.4
+ * 
+ * @package    Blocks_Mags
+ * @subpackage Blocks_Mags/includes/blocks
  */
 class Blocks_Mags_Register_Block
 {

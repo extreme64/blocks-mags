@@ -36,24 +36,25 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
     {
         $this->register_block();
     }
+
     /**
      * Register block.
      * 
      * @since   1.1.3
      */
-
-    /**
-     * @bizm Here is a more up to date example of how to set up a server-side rendered block: https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php
-     *
-     * Two issues with your snippet that need corrected:
-     *
-     * Use wp_register_script instead of wp_enqueue_script
-     * https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php#L8
-     * Pass the handle of the register script to "editor_script" argument of register_block_type(). WordPress will enqueue the script when block is used.
-     * https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php#L20
-     */
     public function register_block()
     {
+        
+        /**
+         * @bizm Here is a more up to date example of how to set up a server-side rendered block: https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php
+         *
+         * Two issues with your snippet that need corrected:
+         *
+         * Use wp_register_script instead of wp_enqueue_script
+         * https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php#L8
+         * Pass the handle of the register script to "editor_script" argument of register_block_type(). WordPress will enqueue the script when block is used.
+         * https://github.com/imaginarymachines/everything-all-of-the-time/blob/main/blocks/php-block/init.php#L20
+         */
         register_block_type($this->name, [
             'editor_script' => $this->enqueue_tag,
             'editor_style'  => $this->enqueue_tag,
@@ -82,6 +83,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
          * 
          * @since   1.0.0
          */
+        //FIXME Wrap rest fields registration
         register_rest_field('casino', 'casino_custom', [
             'get_callback' => function () {
                 $post_id = get_the_ID();
@@ -100,9 +102,12 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
     /**
      * Frontend render on server callback
      * 
-     * @param array     $attr     Attributes.
-     * @param string    $content  Post content.
-     * @param array     $meta     Post meta.
+     * @param   array     $attr       Attributes.
+     * @param   string    $content    Post content.
+     * @param   array     $meta       Post meta.
+     * @return  string    $html       Render markup
+     * 
+     * @inheritdoc Blocks_Mags_Renderable
      * 
      * @since   1.1.3
      */
@@ -189,10 +194,10 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
         $template_path = PLUGIN_ROOT_PATH . 'public\partials\blocks-mags-public-display.php';
         ob_start();
         include $template_path;
-        $fin_html = ob_get_contents();
+        $html = ob_get_contents();
         ob_end_clean();
 
-        return $fin_html;
+        return $html;
     }
 
 }

@@ -5,6 +5,9 @@ if (!defined('ABSPATH')) exit;
  * Interface Renderable defines the method signature for classes that can be rendered.
  * 
  * @since     1.1.3
+ * 
+ * @package    Blocks_Mags
+ * @subpackage Blocks_Mags/includes/blocks
  */
 interface Blocks_Mags_Renderable
 {

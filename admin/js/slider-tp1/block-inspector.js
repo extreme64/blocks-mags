@@ -9,23 +9,25 @@
  * 
  * Part of modules: block-edit.js
  * 
- * Copyright - Proprietary
-*/
+ * @since 1.1.1
+ * 
+ * @package Blocks_Mags 
+ * @subpackage Blocks_Mags/admin/js/slider-tp1
+ */
 
 const { __ } = wp.i18n;
 const { InspectorControls } = wp.blockEditor;
 const {
     PanelBody,
-	Button,
-	ColorPicker,
-    Modal, 
+    Button,
+    ColorPicker,
+    Modal,
     TextControl,
     Icon,
     __experimentalNumberControl,
 } = wp.components;
-const NumberControl = __experimentalNumberControl // alertnative, but with bug ?!
 
-
+/* FIXME Document all */
 
 /**
  * Modal window setup
@@ -33,13 +35,6 @@ const NumberControl = __experimentalNumberControl // alertnative, but with bug ?
 const componentModalInitialState = {
     modalShow: false
 }
-
-/**
- * TODO:
- */
-const action = {
-    type: 'slide_num_change'
-};
 
 /**
  * Actions reducer for block component.
@@ -56,7 +51,7 @@ const componentReducer = (initialState, action) => {
         // default:
         // 	throw new Error();
     }
-    return newState; 
+    return newState;
 };
 
 /* Block's inspector UI components */
@@ -67,10 +62,10 @@ const blockInspectorAssambley = (attributes, setAttributes) => {
     return React.createElement(
         InspectorControls,
         null,
-        React.createElement("p", 
+        React.createElement("p",
             {
-                style: { "padding": "5px 20px", "font-weight": "600"}
-            }, 
+                style: { "padding": "5px 20px", "font-weight": "600" }
+            },
             "Add slides. Choose blocks for content (e.g. heading, paragraph or image)."
         ),
         React.createElement(
@@ -81,7 +76,7 @@ const blockInspectorAssambley = (attributes, setAttributes) => {
                 icon: React.createElement(Icon, { icon: "admin-settings" }),
             },
 
-            React.createElement("p", {}, 
+            React.createElement("p", {},
                 React.createElement(Icon, { icon: "images-alt" }),
                 " Pick number of slides: ",
 
@@ -109,10 +104,9 @@ const blockInspectorAssambley = (attributes, setAttributes) => {
  * @param {*} attributes  Passed attributes
  * @returns Element
  */
-const numberOfSlidesSelector = (attributes) => { 
+const numberOfSlidesSelector = (attributes) => {
 
     const { useState, useRef, useEffect, useReducer } = wp.element;
-    const { numSlides } = attributes;
 
     // Dispatch actions
     const [state, dispatchAct] = useReducer(
@@ -127,7 +121,7 @@ const numberOfSlidesSelector = (attributes) => {
 
     useEffect(() => {
         sliderConfig.current = attributes.numSlides;
-       
+
     }, [attributes.numSlides]);
 
     const propsSliderModal = {

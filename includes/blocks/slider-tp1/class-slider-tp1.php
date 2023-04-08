@@ -5,6 +5,9 @@ if (!defined('ABSPATH')) exit;
  * Custom block Slider Tp1. Customizable slider based around columns.
  * 
  * @since   1.0.0
+ * 
+ * @package    Blocks_Mags
+ * @subpackage Blocks_Mags/includes/blocks/slider-tp1
  */
 class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderable
 {
@@ -27,8 +30,9 @@ class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderabl
     }
 
     /**
+     * Add Actions related to the block
      * 
-     * @since   1.1.3
+     * @since   1.1.4
      */
     public function addActions()
     {

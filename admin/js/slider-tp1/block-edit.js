@@ -8,8 +8,11 @@
  * 
  * Part of modules: main.js
  * 
- * Copyright - Proprietary
-*/
+ * @since 1.1.0
+ * 
+ * @package Blocks_Mags 
+ * @subpackage Blocks_Mags/admin/js/slider-tp1
+ */
 
 const { __ } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
@@ -77,9 +80,9 @@ const editContent = (props) => {
         const innerBlocksLength = parentBlock.innerBlocks.length
 
         if (innerBlocksLength > attributes.numSlides) {
-            
+
             const numToRemove = innerBlocksLength - attributes.numSlides;
-            
+
             for (let i = 0; i < numToRemove; i++) {
                 const lastIndex = Number(innerBlocksLength - 1 - i);
                 const removedBlock = parentBlock.innerBlocks[lastIndex];
@@ -91,7 +94,7 @@ const editContent = (props) => {
             const parenBlockId = parentBlock.clientId
             const numToAdd = attributes.numSlides - innerBlocksLength;
 
-            for (let i = 0; i < numToAdd; i++) {                              
+            for (let i = 0; i < numToAdd; i++) {
                 const columnsBlock = wp.blocks.createBlock("core/columns", {
                     columns: 2,
                     innerBlocks: []

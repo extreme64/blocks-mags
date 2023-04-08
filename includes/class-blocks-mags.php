@@ -124,18 +124,34 @@ class Blocks_Mags {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-blocks-mags-public.php';
 
 
+		// Custom BLOCKS
+		/**
+		 * Include renderable interface
+		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/interface-block-mags-renderable.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/class-blocks-mags-block.php';
 
+		/**
+		 * Custom Gutenberg blocks parent 
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/class-blocks-mags-block.php';
+		
 		/**
 		 * The class responsible for defining custom block 'slider-tp1'
 		 */
 		require_once plugin_dir_path( dirname(__FILE__)) . 'includes/blocks/slider-tp1/class-slider-tp1.php';
-
+		
 		/**
 		 * The class responsible for defining custom block 'casino-score'
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/casino-score/class-casino-score.php';
+		
+		/**
+		 * Add custom blocks
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/blocks/class-blocks-mags-register-block.php';
+		Blocks_Mags_Register_Block::addBlock(Class_Slider_Tp1::BLOCK_STRING_ID);
+		Blocks_Mags_Register_Block::addBlock(Class_Casino_Score::BLOCK_STRING_ID);
+		// Custom BLOCKS END
 
 
 		$this->loader = new Blocks_Mags_Loader();
@@ -173,23 +189,32 @@ class Blocks_Mags {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		/**
+		 * Alter script load tag with attribute. 
+		 * Set type so js files are loaded as modules.
+		 */
 		add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
 			global $post;
 			$qualifies_to_load_as_module = false;
 
-			// Hook into block script handle 
-			if (trim($handle) === "slider-tp1-main") {
-				$qualifies_to_load_as_module = true;
-			} else if (trim($handle) === "casino-score") {
+			// Check if the script handle qualifies to load as module
+			$qualified_handles = [
+				Class_Slider_Tp1::BLOCK_STRING_ID,
+				Class_Casino_Score::BLOCK_STRING_ID,
+			];
+
+			if (in_array(trim($handle), $qualified_handles)) {
 				$qualifies_to_load_as_module = true;
 			}
 
+			// If script qualifies, add type:module
 			if ($qualifies_to_load_as_module && is_admin()) {
 				$tag = str_replace('src=', 'type="module" src=', $tag);
 			}
 
 			return $tag;
+			
 		}, 13, 3);
 
 	}

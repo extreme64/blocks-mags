@@ -3,6 +3,7 @@ if (!defined('ABSPATH')) exit;
 
 /**
  * A parent class for all the custom blocks
+ * 
  * @since 1.1.4
  */
  class Blocks_Mag_Block
@@ -41,9 +42,5 @@ if (!defined('ABSPATH')) exit;
         $this->name = $name;
         $this->enqueue_tag = $enqueue_tag;
     }
-
-
 }
-
-
 ?>

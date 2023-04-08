@@ -21,7 +21,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
      * 
      * @since     1.1.3
      */
-    private static $instance = null;
+    // private static $instance = null;
 
     /**
      * Block name
@@ -37,18 +37,11 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
     public static $enqueue_script_tag = "class-casino-score-block";
 
 
-    /**
-     * Class instance
-     * 
-     * @since   1.1.3
-     */
-    // public static function get_instance()
-    // {
-    //     if (is_null(self::$instance)) {
-    //         self::$instance = new self();
-    //     }
-    //     return self::$instance;
-    // }
+    public function __construct($name, $enqueue_tag)
+    {
+        parent::__construct($name, $enqueue_tag);
+    }
+
 
     /**
      * Initialize block stuff
@@ -57,9 +50,6 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
      */
     public function init()
     {
-        $i18n = new Blocks_Mags_i18n();
-        $this->domain = $i18n->get_i18n_domain();
-
         $this->register_block();
     }
     /**
@@ -80,9 +70,9 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
      */
     public function register_block()
     {
-        register_block_type(self::$block_name, [
-            'editor_script' => self::$enqueue_script_tag,
-            'editor_style' => self::$enqueue_style_tag,
+        register_block_type($this->name, [
+            'editor_script' => $this->enqueue_tag,
+            'editor_style'  => $this->enqueue_tag,
             'render_callback' => function ($attr, $content) {
                 $post_id = get_the_ID();
                 $casino_custom = [
@@ -98,7 +88,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
             'attributes' => [
                 'starStyle' =>              ['type' => 'string', 'default' => '3'],
                 'showCTA' =>                ['type' => 'boolean', 'default' => true],
-                'textCTA' =>                ['type' => 'string', 'default' => __("PLAY NOW", self::$int_domain)],
+                'textCTA' =>                ['type' => 'string', 'default' => __("PLAY NOW", $this->domain)],
                 'styleCTA' =>               ['type' => 'string', 'default' => "ds2"]
             ]
         ]);
@@ -181,7 +171,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
                     break;
             }
             $html_str .= '<p class="casino-score-block__score">'
-                . '<span class="casino-score-block__score-text">' . __($key, self::$int_domain) . '</span>'
+                . '<span class="casino-score-block__score-text">' . __($key, $this->domain) . '</span>'
                 . '<span class="casino-score-block__score-icons">' . $rating_stars . '</span></p>';
         }
 
@@ -205,7 +195,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
             }
 
             $btn = "<a target=\"_blank\" href=\"" . $external_link . "\" class=\"border-radius-10 " . $btn_style . " \"><br>
-                        <b>" . __($attr['textCTA'], self::$int_domain) . "</b><br>
+                        <b>" . __($attr['textCTA'], $this->domain) . "</b><br>
                     </a>";
         }
 
@@ -220,21 +210,6 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
         return $fin_html;
     }
 
-
-    /**
-     * Add action hook to laod frontend files
-     * 
-     * @since   1.1.3
-     */
-    public static function action_hook_wp_enqueue_frontend_files()
-    {
-        add_action('wp', function () {
-            global $post;
-            if (has_block(self::$block_name, $post)) {
-                Class_Casino_Score_Block::enqueue_frontend_files();
-            }
-        });
-    }
 }
 
 

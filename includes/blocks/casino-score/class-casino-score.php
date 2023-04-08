@@ -4,47 +4,31 @@ if (!defined('ABSPATH')) exit;
 /**
  * Custom block Casino Score. Shows ratings withs stars and overall score. Can have CTA btn.
  * 
- * @since     1.1.3
- *
- * @author Mast_G
- * 
- * @singleton
- * 
+ * @since   1.0.0
  */
 class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Renderable
 {
 
     /**
-     * Holds the class reference
+     * Block ID.
      * 
-     * @type Object
-     * 
-     * @since     1.1.3
+     * @since   1.1.4
      */
-    // private static $instance = null;
+    const BLOCK_STRING_ID = 'casino-score';
+
 
     /**
-     * Block name
+     * Class constructor.
      * 
-     * @since     1.0.0
+     * @since   1.1.4
      */
-    protected static $block_name = 'blocks-mags/casino-score';
-
-    protected static $int_domain;
-
-    public static $enqueue_style_tag = "class-casino-score-block";
-
-    public static $enqueue_script_tag = "class-casino-score-block";
-
-
     public function __construct($name, $enqueue_tag)
     {
         parent::__construct($name, $enqueue_tag);
     }
 
-
     /**
-     * Initialize block stuff
+     * Initialize block stuff.
      * 
      * @since   1.1.3
      */
@@ -53,7 +37,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
         $this->register_block();
     }
     /**
-     * Register block
+     * Register block.
      * 
      * @since   1.1.3
      */
@@ -96,7 +80,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
         /**
          * Register REST field that adds data from custom post 'casino'
          * 
-         * @since 1.0.0
+         * @since   1.0.0
          */
         register_rest_field('casino', 'casino_custom', [
             'get_callback' => function () {
@@ -175,7 +159,8 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
                 . '<span class="casino-score-block__score-icons">' . $rating_stars . '</span></p>';
         }
 
-        $btn = '';
+        // Button used in 
+        $template_cta_btn = '';
         $btn_style = '';
 
         if ($attr['showCTA']) {
@@ -194,7 +179,7 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
                     break;
             }
 
-            $btn = "<a target=\"_blank\" href=\"" . $external_link . "\" class=\"border-radius-10 " . $btn_style . " \"><br>
+            $template_cta_btn = "<a target=\"_blank\" href=\"" . $external_link . "\" class=\"border-radius-10 " . $btn_style . " \"><br>
                         <b>" . __($attr['textCTA'], $this->domain) . "</b><br>
                     </a>";
         }
@@ -211,7 +196,4 @@ class Class_Casino_Score extends Blocks_Mag_Block implements Blocks_Mags_Rendera
     }
 
 }
-
-
-$obj = new Class_Casino_Score('blocks-mags/casino-score', "casino-score-block");
-$obj->init();
+?>

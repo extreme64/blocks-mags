@@ -6,15 +6,6 @@ if (!defined('ABSPATH')) exit;
  */
 class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderable
 {
-    /**
-     * 
-     */
-    // protected $int_domain;
-
-    /**
-     * 
-     */
-    // public $enqueue_tag = "slider-tp1-block";
 
     /**
      * 
@@ -23,11 +14,10 @@ class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderabl
     {
         add_action('init', array($this, 'init'));
         $i18n = new Blocks_Mags_i18n();
-        $this->int_domain = $i18n->get_i18n_domain;
+        $this->int_domain = $i18n->get_i18n_domain();
         
         $this->name = $name;
         $this->enqueue_tag = $enqueue_tag; //"slider-tp1-block";
-        $this->init();
     }
 
     /**
@@ -38,25 +28,20 @@ class Class_Slider_Tp1 extends Blocks_Mag_Block implements Blocks_Mags_Renderabl
         register_block_type($this->name, [
             'editor_script' => $this->enqueue_tag,
             'editor_style'  => $this->enqueue_tag,
-            'render_callback' => [$this, $this->render],
+            'render_callback' => [$this, 'render'],
         ]);
     }
 
     /**
      * 
      */
-    // public function render_slider_tp1($attributes, $content)
-    // {
-    //     return '<div class="slider-tp1">' . $content . '</div>';
-    // }
-
     public function render($attributes, $content, $meta = []) {
         return '<div class="slider-tp1">' . $content . '</div>';
     }
 }
 
 /* .. */
-$blocksMagBlock = new Blocks_Mag_Block('blocks-mags/class-slider-tp1', "slider-tp1-block");
+$blocksMagBlock = new Class_Slider_Tp1('blocks-mags/class-slider-tp1', "slider-tp1-block");
 // $blocksMagBlock->init();
 
 ?>

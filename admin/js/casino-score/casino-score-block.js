@@ -3,6 +3,9 @@
  * Custom block Casino Score. Shows ratings withs stars and overall score. Can have CTA btn.
  * 
  * @since     1.1.3
+ * 
+ * @package Blocks_Mags 
+ * @subpackage Blocks_Mags/admin/js/casino-score
  */
 
 const { __ } = wp.i18n;

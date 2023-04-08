@@ -4,17 +4,20 @@
  * 
  * Part of modules: /
  * 
- * Copyright - Proprietary
-*/
+ * @since 1.1.0
+ * 
+ * @package Blocks_Mags 
+ * @subpackage Blocks_Mags/admin/js/slider-tp1
+ */
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 import { editContent } from "./block-edit.js";
-import { saveContent } from "./block-save.js"; 
+import { saveContent } from "./block-save.js";
 
 
-registerBlockType( "blocks-mags/class-slider-tp1", {
+registerBlockType("blocks-mags/class-slider-tp1", {
 	title: __("Slider TP1 - BMags", "blocks-mags"),
 	icon: "slides",
 	category: "common",
@@ -39,9 +42,7 @@ registerBlockType( "blocks-mags/class-slider-tp1", {
 			default: "#faeef2",
 		},
 	},
-
 	edit: editContent,
 	save: saveContent
-
 });
 

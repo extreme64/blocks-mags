@@ -1,9 +1,13 @@
 /**
- *  Editor save function for Casino Score block.
+ * Editor save function for Casino Score block.
  * 
  * @since     1.1.3
+ * 
+ * @package Blocks_Mags 
+ * @subpackage Blocks_Mags/admin/js/casino-score
  */
 
+/* FIXME Document all */
 const { __ } = wp.i18n;
 const { InspectorControls } = wp.blockEditor;
 const {

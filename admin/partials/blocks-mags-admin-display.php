@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 /**
  * Provide a admin area view for the plugin
@@ -12,5 +13,3 @@
  * @subpackage Blocks_Mags/admin/partials
  */
 ?>
-
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->

@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -76,7 +77,7 @@ class Blocks_Mags_Admin {
 		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/blocks-mags-admin.css', array(), $this->version, 'all' );
 
 		wp_enqueue_style(
-			'slider-tp1-main', 
+			Class_Slider_Tp1::BLOCK_STRING_ID, 
 			plugin_dir_url(__FILE__) . 'css/slider-tp1/main.css', 
 			array(), 
 			$this->version,
@@ -85,10 +86,10 @@ class Blocks_Mags_Admin {
 
 
 		wp_register_style(
-			'casino-score',
+			Class_Casino_Score::BLOCK_STRING_ID,
 			plugin_dir_url(__FILE__) . 'css/casino-score/casino-score-block.css',
 			['wp-edit-blocks'],
-			$this->version . rand(1, 2222)
+			$this->version
 		);
 		wp_enqueue_style('casino-score');
         
@@ -105,7 +106,7 @@ class Blocks_Mags_Admin {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script(
-			'slider-tp1-main',
+			Class_Slider_Tp1::BLOCK_STRING_ID, 
 			plugin_dir_url(__FILE__) . 'js/slider-tp1/main.js',
 			['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
 			$this->version,
@@ -113,10 +114,10 @@ class Blocks_Mags_Admin {
 		);
 
 		wp_register_script(
-			'casino-score',
+			Class_Casino_Score::BLOCK_STRING_ID,
 			plugin_dir_url(__FILE__) . 'js/casino-score/casino-score-block.js',
 			['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
-			$this->version . rand(1, 2222),
+			$this->version,
 			true
 		);
 		wp_enqueue_script('casino-score');

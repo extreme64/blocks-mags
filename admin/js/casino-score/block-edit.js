@@ -7,7 +7,6 @@
  * @subpackage Blocks_Mags/admin/js/casino-score
  */
 
-/* FIXME Document all */
 const { __ } = wp.i18n;
 const { InspectorControls } = wp.blockEditor;
 const {
@@ -21,28 +20,35 @@ const {
 } = wp.components;
 const { useState, useEffect } = wp.element;
 
+
+
 /**
- *
+ * Edit block
+ * 
  * @param {*} props
  * @returns
  */
 const editContent = (props) => {
 
-    const intDomain = 'block';
+    /** Domain from php class 'Blocks_Mags_i18n'. 
+     * Note: Better way?! 
+     */
+    const intDomain = 'blocks-mags'
 
-    const { attributes, setAttributes, clientId } = props;
+
+
+    const {attributes, setAttributes, clientId} = props;
     const [starInnerHtml, setStarInnerHtml] = useState()
     const [starClasses, setStarClasses] = useState()
     const [ctaClasses, setCtaClasses] = useState()
+    const [noCustomDataNoticeDone, setNoCustomDataNoticeDone] = useState(false)
 
-    const title = wp.data.select("core/editor").getEditedPostAttribute("title");
-    let casino_custom = wp.data
-        .select("core/editor")
-        .getEditedPostAttribute("casino_custom");
 
-    if (casino_custom === undefined) {
-        console.log("No casino_custom data");
-    }
+    
+    const title = wp.data.select('core/editor').getEditedPostAttribute('title');
+    let casino_custom;
+    
+
 
     useEffect(() => {
 
@@ -218,7 +224,12 @@ const editContent = (props) => {
                     React.createElement(
                         "p",
                         { class: "wp-block-pza-casino-score__scors" },
-                        React.createElement(
+                        !casino_custom && React.createElement(
+                            "p",
+                            {},
+                            casinoCustomDataMissingMessage
+                        ),
+                        casino_custom && React.createElement(
                             "ul",
                             {
                                 class: "wp-block-pza-casino-score__scors-list",
@@ -265,7 +276,7 @@ const editContent = (props) => {
                             )
                         )
                     ),
-                    React.createElement(
+                    casino_custom && React.createElement(
                         "span",
                         { class: "wp-block-pza-casino-score__overall" },
                         `Overall: ${casino_custom.overall}`

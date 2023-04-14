@@ -34,7 +34,8 @@ const editContent = (props) => {
      * Note: Better way?! 
      */
     const intDomain = 'blocks-mags'
-
+    const casinoCustomDataStr = 'casino_custom'
+    const casinoCustomDataMissingMessage = "Note: No custom casino posta data!"
 
 
     const {attributes, setAttributes, clientId} = props;
@@ -43,7 +44,19 @@ const editContent = (props) => {
     const [ctaClasses, setCtaClasses] = useState()
     const [noCustomDataNoticeDone, setNoCustomDataNoticeDone] = useState(false)
 
-
+    const showNodataNotice = (type, noticeText, url, urlText) => {
+        if (!noCustomDataNoticeDone) {
+            wp.data.dispatch('core/notices').createNotice(type, noticeText, {
+                isDismissible: true,
+                actions: [
+                    {
+                    url: urlText,
+                    label: url,
+                    },
+                ],
+            });
+        }
+    };
     
     const title = wp.data.select('core/editor').getEditedPostAttribute('title');
     let casino_custom;

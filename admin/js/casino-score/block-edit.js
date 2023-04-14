@@ -35,8 +35,6 @@ const editContent = (props) => {
      */
     const intDomain = 'blocks-mags'
     const casinoCustomDataStr = 'casino_custom'
-    const casinoCustomDataMissingMessage = "Note: No custom casino posta data!"
-
 
     const {attributes, setAttributes, clientId} = props;
     const [starInnerHtml, setStarInnerHtml] = useState()
@@ -44,7 +42,7 @@ const editContent = (props) => {
     const [ctaClasses, setCtaClasses] = useState()
     const [noCustomDataNoticeDone, setNoCustomDataNoticeDone] = useState(false)
 
-    const showNodataNotice = (type, noticeText, url, urlText) => {
+    const showNoDataNotice = (type, noticeText, url, urlText) => {
         if (!noCustomDataNoticeDone) {
             wp.data.dispatch('core/notices').createNotice(type, noticeText, {
                 isDismissible: true,
@@ -61,7 +59,24 @@ const editContent = (props) => {
     const title = wp.data.select('core/editor').getEditedPostAttribute('title');
     let casino_custom;
     
+    try {
+        casino_custom = wp.data.select('core/editor').getEditedPostAttribute(casinoCustomDataStr);
+        
+        if (typeof casino_custom === 'undefined') {
+            throw new Error('Casino Scores block: Casino custom data undefined!');
+        }
+        
+        if(Object.keys(casino_custom).length === 0) {
+            showNoDataNotice('warning', 'Casino Scores block: Missing data!', 'https://na.io', 'Read info...');
+        }
 
+    } catch (error) {
+        showNoDataNotice('error', error, 'https://na.io', 'Read error info...');
+    }
+
+    useEffect(() => {
+        setNoCustomDataNoticeDone(typeof casino_custom === 'undefined');
+    }, [casino_custom]);
 
     useEffect(() => {
 
